@@ -1,0 +1,36 @@
+[[package]]
+^
+name = "atomicwrites"
+version = "0.5.1"
+description = "Character encoding aliases for legacy web content"
+category = "main"
+optional = false
+python-versions = "*"
+     
+  [
+    package,
+    name {
+        atomicwrites
+    },
+    version {
+        0.5.1
+    },
+    description {
+        Character encoding aliases for legacy web content
+    },
+    category {
+        main
+    },
+    optional {
+        false
+    },
+    extras {
+        docs [
+            sphinx,
+            jaraco.packaging (>=9),
+            rst.linker (>=1.9)
+        ]
+    }
+  ]   
+
+  -- if inside " " then include spaces
