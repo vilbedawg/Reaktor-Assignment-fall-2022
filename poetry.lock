@@ -1,3 +1,2 @@
-[[package.dependancies]]
-asd = "ASDASDASD"
-asdqwe = "asddsad"
+name = "asd"
+   ^
