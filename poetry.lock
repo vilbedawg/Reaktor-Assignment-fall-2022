@@ -1,2 +1,5 @@
-name = "asd"
-   ^
+
+[[package]]
+name = "Vilho"
+boolean = true
+characters = 'asdasd'

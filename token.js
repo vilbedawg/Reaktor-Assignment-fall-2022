@@ -1,5 +1,7 @@
-class Token {
-    constructor(key, value) {
+module.exports = Token = class Token {
+    
+    constructor(key, value, type) {
+        this.type = type;
         this.key = key;
         this.value = value;
     }
@@ -9,4 +11,3 @@ class Token {
     }
 }
 
-module.exports = Token;
