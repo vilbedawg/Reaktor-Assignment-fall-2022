@@ -7,7 +7,7 @@ module.exports = Token = class Token {
     }
 
     copy() {
-        return { key: this.key, value: this.value };
+        return { type: this.type, key: this.key, value: this.value };
     }
 }
 

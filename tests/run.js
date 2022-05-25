@@ -7,9 +7,9 @@ const { Parser } = require('../parser');
 const parser = new Parser(); 
 try {
     const content = fs.readFileSync('./poetry.lock', 'utf-8');
-    const x = parser.parse(content);
-    const p = JSON.stringify(x);
-    console.log('RESULT:', JSON.parse(p));
+    const x = parser.Program(content);
+    console.log(x)
 } catch (error) {
     console.error(error)
 }
+    
