@@ -1,10 +1,11 @@
 const { Tokenizer } = require('./tokenizer');
-const encoder = new TextEncoder();
 const grammar = require('./grammar');
+const Reader = require('./reader');
 const g = new grammar();
+
 class Parser {
+	
 	constructor() {
-		this.tokenizer = new Tokenizer();
 		this.tokens = [];
 	}
 
@@ -13,13 +14,12 @@ class Parser {
 	 * Program
 	 */
 	Program(string) {
-		// encode the buffer array into ASCII characters
-		const encoded = encoder.encode(string);
-		this.tokenizer.init(encoded);
-
-		while (!this.tokenizer.isEOF()) {
-			const tokens = this.tokenizer.tokenize();
-			this.tokens.push(tokens);
+		this.Tokenizer = new Tokenizer(string);
+        this.Tokenizer.init();
+		while (!this.Tokenizer.isEof()) {
+			const tokens = this.Tokenizer.tokenize();
+			tokens != null ? this.tokens.push(tokens) : null; 
+			
 		}
 
 		const parsed = this.parse();

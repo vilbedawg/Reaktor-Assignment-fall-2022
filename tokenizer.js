@@ -1,9 +1,8 @@
 const grammar = require('./grammar');
-const Token = require('./token');
+const Reader = require('./reader');
 const g = new grammar();
 
 const Spec = [
-	// package title
 	[/\[\[package\]]/i, 'PACKAGE'],
 	[/\[package\]/i, 'PACKAGE'],
 	[/\[package\.dependencies\]/i, 'PACKAGE.DEPENDENCIES'],
@@ -12,39 +11,15 @@ const Spec = [
 	[/\[metadata\.files\]/i, 'METADATA.FILES'],
 ];
 
-class Tokenizer {
-	init(string) {
+class Tokenizer extends Reader {
+
+	constructor(string) {
+		super(string);
 		this.string = string;
-		this.cursor = -1;
-		this.current_char = null;
-		this.token = new Token();
-		this.advance();
 	}
-
-	advance() {
-		this.cursor++;
-		if (!this.hasMoreTokens()) {
-			this.current_char = null;
-		} else {
-			this.current_char = this.string[this.cursor];
-		}
-	}
-
-	hasMoreTokens() {
-		return this.cursor < this.string.length;
-	}
-
-	isEOF() {
-		return this.cursor === this.string.length;
-	}
-
-	peek() {
-		return this.string[this.cursor + 1];
-	}
-
 	readComment() {
 		let str = '';
-		while (!g.isEol(this.current_char) && !this.isEOF()) {
+		while (!g.isEol(this.current_char) && !this.isEof()) {
 			this.advance();
 			str += String.fromCharCode(this.current_char);
 		}
@@ -53,7 +28,7 @@ class Tokenizer {
 
 	readKey(condition) {
 		let s = '';
-		while (!this.isEOF() && !condition(this.current_char) && !g.isClosingBracket(this.peek())) {
+		while (!this.isEof() && !condition(this.current_char) && !g.isClosingBracket(this.peek())) {
 			s += String.fromCharCode(this.current_char);
 			this.advance();
 		}
@@ -63,7 +38,7 @@ class Tokenizer {
 
 	readWhile(condition) {
 		let s = '';
-		while (!this.isEOF() && !condition(this.current_char)) {
+		while (!this.isEof() && !condition(this.current_char)) {
 			s += String.fromCharCode(this.current_char);
 			this.advance();
 		}
@@ -82,7 +57,7 @@ class Tokenizer {
 
 	readArray() {
 		let tokens = [];
-		while (!this.isEOF() && !g.isArrayClose(this.current_char)) {
+		while (!this.isEof() && !g.isArrayClose(this.current_char)) {
 			const val = this.readValue((x) => g.isArrayClose(x));
 			val != null ? tokens.push(val) : null;
 			this.advance();
@@ -93,7 +68,7 @@ class Tokenizer {
 	readObject() {
 		let tokens = [];
 
-		while (!this.isEOF() && !g.isObjectClose(this.current_char)) {
+		while (!this.isEof() && !g.isObjectClose(this.current_char)) {
 			const c = this.current_char;
 			if (g.isWhitespace(c)) {
 				this.advance();
@@ -101,10 +76,11 @@ class Tokenizer {
 			}
 			const key = this.readValue((x) => g.isKeyValSep(x));
 
-			if (key == null) throw new SyntaxError('Values must have keypair');
-			if (g.isUnquotedKey(key[0])) throw new SyntaxError(`${key} Key value must be a value of key`);
+			if (key == null) this.SyntaxError('Values must have keypair');
+			if (g.isUnquotedKey(key[0])) this.SyntaxError(`${key} Key value must be a value of key`);
 
 			const value = this.readValue((x) => g.isNewline(x));
+			if(value == null) this.SyntaxError('Key must have a value');
 			tokens.push({ key, value });
 			this.advance();
 		}
@@ -112,10 +88,10 @@ class Tokenizer {
 	}
 
 	readValue(condition) {
-		while (!this.isEOF() && !condition(this.current_char)) {
+		while (!this.isEof() && !condition(this.current_char)) {
 			const c = this.current_char;
 			if (g.isCommentStart(c)) {
-				throw new SyntaxError('Comments are not allowed inside of values');
+				this.SyntaxError('Comments are not allowed inside of values');
 			} else if (g.isUnquotedKey(c)) {
 				const val = this.readKey((x) => g.isAnyWhitespace(x) || g.isCommaSep(x));
 				return val;
@@ -154,15 +130,15 @@ class Tokenizer {
 		let comments = [];
 		let str = '';
 		let tid = '';
-		while (!this.isEOF() && this.current_char != null) {
+		while (!this.isEof() && this.current_char != null) {
 			let c = this.current_char;
-			if (this.isEOF()) {
+			if (this.isEof()) {
 				console.log('EOF');
 				return;
 			} else if (g.isKeyValSep(c)) {
 				this.advance();
 				const val = this.readValue((x) => g.isNewline(x));
-				if (val == null) throw new SyntaxError(`${str}: requires a value`);
+				if (val == null) this.SyntaxError(`${str}: requires a value`);
 				this.token.key = str;
 				this.token.value = val;
 				tokens.push(this.token.copy());
@@ -171,7 +147,7 @@ class Tokenizer {
 				const val = this.readComment();
 				comments.push(val);
 			} else if (g.isNonAscii(c)) {
-				throw new SyntaxError(
+				this.SyntaxError(
 					`Unable to read next token: "${String.fromCharCode(c)}" not supported.`
 				);
 			} else {
@@ -190,6 +166,7 @@ class Tokenizer {
 			comments,
 		};
 	}
+
 }
 
 module.exports = {

@@ -1,2 +1,5 @@
 [package]
-name = hello #this is error
+test = Hello
+
+[package.dependencies]
+hello = world

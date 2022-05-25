@@ -4,11 +4,11 @@
 const fs = require('fs');
 const { Parser } = require('../parser');
 
-const parser = new Parser(); 
+
 try {
     const content = fs.readFileSync('./poetry.lock', 'utf-8');
-    const x = parser.Program(content);
-    console.log(x)
+    const parser = new Parser();
+    const x = parser.Program(content); 
 } catch (error) {
     console.error(error)
 }
