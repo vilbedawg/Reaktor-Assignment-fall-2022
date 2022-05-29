@@ -1,0 +1,35 @@
+
+  .App {
+    display: grid; 
+    grid-template-columns: 1fr 2fr 0.6fr; 
+    grid-template-rows: 0.5fr 6.1fr 0.4fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "navbar navbar packages"
+      "details details packages"
+      "footer footer packages"; 
+      height: 100%;
+  }
+
+  .details { grid-area: details;}
+  .navbar { grid-area: navbar;}
+  .footer { grid-area: footer;}
+  .packages { grid-area: packages;}
+
+  * {
+    margin: 0px; 
+    padding: 0px; 
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+  }
+  *,
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  html, body, #root, #app > div {
+    height: 100%;
+    background-color: #2b2d42;
+  }

@@ -1,0 +1,42 @@
+#navbar {
+  background: #2b2d42;
+  color: #edf2f4;
+  display: flex;
+  align-items: center;
+  line-height: 60px;
+  z-index: 10;
+  }
+  
+  .nav-wrapper {
+    margin: auto;
+    text-align: center;
+    width: 70%;
+  } @media(max-width: 768px) {
+      .nav-wrapper {
+        width: 90%;
+      }
+    } @media(max-width: 638px) {
+        .nav-wrapper {
+          width: 100%;
+        }
+      } 
+  
+  
+  .logo {
+    float: left;
+    margin-left: 28px;
+    font-size: 1.5em;
+    height: 60px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  } 
+
+  .logo p {
+    text-decoration: none;
+    color: #edf2f4;
+    font-weight: 700;
+  }
+  
+  
+  
+  

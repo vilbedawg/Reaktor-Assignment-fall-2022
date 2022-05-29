@@ -1,5 +1,0 @@
-[package]
-test = Hello
-
-[package.dependencies]
-hello = world

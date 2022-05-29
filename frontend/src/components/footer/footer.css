@@ -1,0 +1,20 @@
+.copyright {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 14px;
+    opacity: .7;
+}
+
+.copyright:hover {
+    opacity: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 2em;
+    align-items: center;
+    background: #2b2d42;
+}

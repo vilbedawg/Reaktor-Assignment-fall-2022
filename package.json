@@ -1,0 +1,28 @@
+{
+  "name": "reaktor-assignment-fall-2022",
+  "version": "1.0.0",
+  "description": "poetry parser",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon backend/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vilbedawg/Reaktor-Assignment-fall-2022.git"
+  },
+  "author": "Vilho Luoma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vilbedawg/Reaktor-Assignment-fall-2022/issues"
+  },
+  "homepage": "https://github.com/vilbedawg/Reaktor-Assignment-fall-2022#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "multer": "^1.4.4-lts.1"
+  }
+}

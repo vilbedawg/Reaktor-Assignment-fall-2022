@@ -1,0 +1,147 @@
+.details {
+    background-color: #bdd5ea;
+    color: #333;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.header {
+    padding: 1em;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;    
+    height: 60px;
+    font-weight: 600;
+    font-size: 24px;
+    background-color: #8d99ae;
+}
+
+.header > span {
+    margin-right: 25px;
+}
+
+.return-button {
+    cursor: pointer;
+    background-color: #333;
+    color: #e63946;
+    padding: 5px;
+    border-radius: 50px;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.return-button:hover {
+    color: #e63946;
+}
+.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    grid-column: 1/4;
+    background-color: #FFF;
+}
+
+.all {
+    display: flex;
+    flex-wrap: wrap;
+    background: #2b2d42 !important;
+}
+
+.package-card {
+    flex: 1 0 21%;
+    background-color: #8d99ae;
+    padding: 2em;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #FFF;
+    position: relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    cursor: pointer;
+}
+
+.package-card:hover {
+    opacity: .8;   
+}
+
+.package-card:hover .card-detail {
+    color: #e63946;
+}
+
+.card-detail {
+    color: #333;
+    font-weight: 600;
+}
+
+.box-svg {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.header > h3 {
+    cursor: pointer;
+    padding-left: 10%;
+}
+
+.dependency.disabled {
+    display: none;
+}
+
+.dependency-clickable {
+    cursor: pointer;    
+}
+
+.dependency-clickable:hover {
+    color: #e63946;
+}
+
+.details-container {
+    padding: 3em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dependencies-container {
+    padding: 3em;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.dependencies {
+    flex: 1 0 50%;
+}
+
+.reverse-dependencies {
+    flex: 1 0 50%;
+}
+
+.pkg {
+    /* border-bottom: 1px solid; */
+    flex: 1 0 50%;
+    padding-left: 0;
+    border-radius: 5px;
+}
+
+.pkg:last-child {
+    border-bottom: 0;
+}
+
+.pkg-keys {
+    font-weight: 600;
+    letter-spacing: 1.2px;
+}
+
+.pkg-values {
+    padding-bottom: 1em;
+    word-break: break-word;
+    width: 90%;
+}
+
+.disabled {
+    cursor:not-allowed;
+    opacity: .5;
+}
