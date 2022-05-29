@@ -5,7 +5,7 @@ const { Parser } = require('../../../utils/parser');
 const parserController  = (req, res) => {
   
     try {
-        const content = fs.readFileSync(path.join('backend/uploads', 'file-1653844924574-411937403.lock'), 'utf-8');
+        const content = fs.readFileSync(path.join('backend/uploads', 'poetry.lock'), 'utf-8');
         const parser = new Parser();
         const parsed = parser.Program(content); 
         res.status(200).send(parsed);

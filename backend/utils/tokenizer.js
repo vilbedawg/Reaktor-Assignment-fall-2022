@@ -227,7 +227,8 @@ class Tokenizer extends Reader {
 		this.tokens = [];
 		if (this.type == "METADATA.FILES") {
 			const METADATA_FILES = Object.fromEntries(this.metadata);
-			return { ...PKG, METADATA_FILES };
+			// return { ...PKG, METADATA_FILES };
+      return null;
 		}
 	  	return { ...PKG, DEPENDENCIES };
 

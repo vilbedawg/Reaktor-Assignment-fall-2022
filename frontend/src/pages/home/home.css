@@ -40,6 +40,7 @@
 
 .pkgName.active {
     background-color: #1a1a1a;
+    color: #e63946;
 }
 
 ::-webkit-scrollbar{

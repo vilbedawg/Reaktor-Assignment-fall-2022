@@ -1,0 +1,23 @@
+.select-file {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    width: 150px;
+    border-radius: 15px;
+    background: #e63946;
+    cursor: pointer;
+    position: relative;
+}
+
+.select-file:hover {
+    color: #FFF;
+    fill: #FFF;
+}
+
+.add-icon {
+    position: absolute;
+    top: -5px;
+    right: 0;
+}

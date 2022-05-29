@@ -23,7 +23,7 @@ export const Details = (props) => {
       {props.pkg !== "" ? (
         <>
           {Object.entries(props.pkg).map((pkg, i) => {
-            if (pkg[0] === "DEPENDENCIES") return;
+            if (pkg[0] === "DEPENDENCIES" || pkg[0] === "version") return null;
 
             if (typeof pkg[1] === "object" && !Array.isArray(pkg[1])) {
               return (

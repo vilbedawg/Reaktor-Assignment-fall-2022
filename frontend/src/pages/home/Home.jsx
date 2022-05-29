@@ -1,33 +1,23 @@
 import './home.css';
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import React from 'react';
 import {  Details } from '../../components/details/Details';
-import axios from '../../api/axios';
 import { UploadFile } from '../../components/uploadFile/UploadFile';
 
 export const Home = () => {
     const [data, setData] = useState([]);
     const [isActivePkg, setActivePkg] = useState('');
+    const [currentFile, setCurrentFile] = useState('');
     const pkgItemRef = useRef(null);
 
-    // useEffect(() => {
-
-    //     const r = async () => {
-    //         const g = await axios.get('/v1/get');
-
-    //         setData(g.data);
-            
-    //     }
-
-    //     r();
-
-    // }, [])
-    const setFile = (file) => {
-        setData(file)
-    }
 
     const showDetails = (pkg) => {
         setActivePkg(pkg);  
+    }
+
+    const setFile = (file, filename) => {
+        setData(file);
+        setCurrentFile(filename);
     }
 
     const showDependency = (pkg) => {
@@ -47,15 +37,18 @@ export const Home = () => {
       data.length === 0 
       ? 
       (
-        <div className='details empty' style={{backgroundColor: "white"}}>
-                <h1>No file selected..</h1>
+        <div className='details empty'>
+                <h3>No file selected</h3>
                 <UploadFile passFile={setFile}/>
         </div>
       )
       :
       (
         <>
-        {/* package list  */}
+        <div className='close-file' onClick={() => setData([])}>
+            <p>{currentFile}</p>
+         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.5 16.084l-1.403 1.416-4.09-4.096-4.102 4.096-1.405-1.405 4.093-4.092-4.093-4.098 1.405-1.405 4.088 4.089 4.091-4.089 1.416 1.403-4.092 4.087 4.092 4.094z"/></svg>
+        </div>
         <div className="packages">
             <div className="pkgList">
                 {data.map((item, key) => {

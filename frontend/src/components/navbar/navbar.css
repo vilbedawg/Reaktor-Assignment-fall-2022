@@ -7,21 +7,6 @@
   z-index: 10;
   }
   
-  .nav-wrapper {
-    margin: auto;
-    text-align: center;
-    width: 70%;
-  } @media(max-width: 768px) {
-      .nav-wrapper {
-        width: 90%;
-      }
-    } @media(max-width: 638px) {
-        .nav-wrapper {
-          width: 100%;
-        }
-      } 
-  
-  
   .logo {
     float: left;
     margin-left: 28px;
