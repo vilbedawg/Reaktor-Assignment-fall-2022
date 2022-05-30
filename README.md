@@ -11,7 +11,7 @@ This is a simple application to parse users poetry.lock files and to reveal some
 
 
 
-The application was built using:
+## The application was built using:
 * React
 * Node.js & Express
 
