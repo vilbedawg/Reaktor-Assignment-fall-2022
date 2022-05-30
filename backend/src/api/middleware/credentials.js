@@ -1,6 +1,7 @@
 const allowedOrigins = [
     "http://localhost:5000",
     "http://localhost:3000",
+    "https://vilbedawg-parser.herokuapp.com"
 ];
 
 const credentials = (req, res, next) => {
