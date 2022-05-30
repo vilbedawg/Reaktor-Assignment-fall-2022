@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = 'http://localhost:5000';
+const baseURL = 'https://vilbedawg-parser.herokuapp.com/';
 
 export default axios.create({
     baseURL: baseURL,
