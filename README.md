@@ -1,4 +1,6 @@
 # Poetry parser
+https://vilbedawg-parser.herokuapp.com/
+
 This is a simple application to parse users poetry.lock files and to reveal some key information about the installed packages. Upon uploading a file, the user will receive a list of packages that were included in the file. The user can then get more information about each package by clicking on it:
 * Name
 * Description
