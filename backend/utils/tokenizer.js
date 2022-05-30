@@ -219,21 +219,21 @@ class Tokenizer extends Reader {
 
   createPackage() {
     try {
-		if(this.tokens.length <= 0) return null;
-			
-		const PKG = Object.fromEntries(this.tokens)
-		const DEPENDENCIES = Object.fromEntries(this.deps);
-		this.deps = [];
-		this.tokens = [];
-		if (this.type == "METADATA.FILES") {
-			const METADATA_FILES = Object.fromEntries(this.metadata);
-			// return { ...PKG, METADATA_FILES };
-      return null;
-		}
-	  	return { ...PKG, DEPENDENCIES };
+      if (this.tokens.length <= 0) return null;
+
+      const PKG = Object.fromEntries(this.tokens)
+      const DEPENDENCIES = Object.fromEntries(this.deps);
+      this.deps = [];
+      this.tokens = [];
+      if (this.type == "METADATA.FILES") {
+        const METADATA_FILES = Object.fromEntries(this.metadata);
+        // return { ...PKG, METADATA_FILES };
+        return null;
+      }
+      return { ...PKG, DEPENDENCIES };
 
     } catch (error) {
-      console.error("Error at package creation:", error);
+      return new Error("Error at package creation:", error);
     }
 
     return null;

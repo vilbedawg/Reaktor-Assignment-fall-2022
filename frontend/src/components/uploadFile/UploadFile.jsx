@@ -1,17 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
+import { toast } from 'react-toastify';
 import axios from '../../api/axios';
 import './uploadFile.css';
 
 export const UploadFile = (props) => {
-  const [fileName, setFileName] = useState('');
-
-  const removeFile = async () => {
-    props.passFile([]);
-  }
 
   const uploadFile = async (e) => {
     e.preventDefault();
-    // setFileName();
     
     const formData = new FormData();
     formData.append('file', e.target.files[0]);
@@ -26,10 +21,10 @@ export const UploadFile = (props) => {
       props.passFile(res.data, e.target.files[0].name);
     } catch (error) {
       if(error.status === 500) {
-        console.error("Something went wrong with the server");
+        toast.error("something went wrong with the server");
       }
-      else {
-        console.error(error.message)
+      else {  
+        toast.error(error.response.data);
       }
     }
 

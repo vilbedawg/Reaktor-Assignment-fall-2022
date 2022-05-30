@@ -3,6 +3,9 @@ import { useRef, useState } from "react"
 import React from 'react';
 import {  Details } from '../../components/details/Details';
 import { UploadFile } from '../../components/uploadFile/UploadFile';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const Home = () => {
     const [data, setData] = useState([]);
@@ -40,6 +43,7 @@ export const Home = () => {
         <div className='details empty'>
                 <h3>No file selected</h3>
                 <UploadFile passFile={setFile}/>
+                <ToastContainer />
         </div>
       )
       :

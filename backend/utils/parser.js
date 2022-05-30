@@ -1,7 +1,7 @@
 const { Tokenizer } = require('./tokenizer');
 
 class Parser {
-	
+
 	constructor() {
 		this.tokens = [];
 	}
@@ -12,17 +12,17 @@ class Parser {
 	 */
 	Program(string) {
 		this.Tokenizer = new Tokenizer(string);
-        this.Tokenizer.init();
+		this.Tokenizer.init();
 
 		while (!this.Tokenizer.isEof()) {
 			// not jumping out correctly
 			const tokens = this.Tokenizer.tokenize();
-			tokens != null ? this.tokens.push(tokens) : null; 
+			tokens != null ? this.tokens.push(tokens) : null;
 		}
 
 		const valid = this.validJSON();
-		if(valid) return this.tokens;
-		
+		if (valid) return this.tokens;
+
 		return null;
 	}
 
@@ -32,7 +32,6 @@ class Parser {
 			const p = JSON.parse(s);
 			return true;
 		} catch (error) {
-			console.error(error);
 			return false;
 		}
 	}
