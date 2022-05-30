@@ -99,13 +99,13 @@
 }
 
 .details-container {
-    padding: 3em;
+    padding: 2em;
     display: flex;
     flex-wrap: wrap;
 }
 
 .dependencies-container {
-    padding: 3em;
+    padding: 2em;
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
