@@ -23,13 +23,3 @@ https://user-images.githubusercontent.com/82541244/170973577-dadccc61-4c43-4696-
 ### This application was built with:
 * React
 * Node.js & Express
-
-# How to setup the project locally
-
-1. Clone this repository to your local machine
-
-2. npm install to install all the necessary packages
-
-3. npm start in the project directory
-
-4. Open http://localhost:3000 to view it in the browser
