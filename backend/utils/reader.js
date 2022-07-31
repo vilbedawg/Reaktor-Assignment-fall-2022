@@ -17,6 +17,7 @@ class Reader {
     this.advance();
   }
 
+  // Advanced the cursor onto the next character
   advance() {
     this.cursor++;
     if (!this.hasMoreTokens()) {

@@ -1,7 +1,6 @@
 const { Tokenizer } = require('./tokenizer');
 
 class Parser {
-
 	constructor() {
 		this.tokens = [];
 	}
@@ -10,29 +9,31 @@ class Parser {
 	 * Main entry point.
 	 * Program
 	 */
-	Program(string) {
-		this.Tokenizer = new Tokenizer(string);
+	Program(content) {
+		this.Tokenizer = new Tokenizer(content);
 		this.Tokenizer.init();
 
+		// Tokenize untill End of file.
 		while (!this.Tokenizer.isEof()) {
-			// not jumping out correctly
 			const tokens = this.Tokenizer.tokenize();
 			tokens != null ? this.tokens.push(tokens) : null;
 		}
 
-		const valid = this.validJSON();
-		if (valid) return this.tokens;
+		// Try to parse the tokenized packages and 
+		// return them only if the JSON parsing is successful.
+		if (this.validJSON()) return this.tokens;
 
+		// Otherwise we dont return anything, so we dont try display 
+		// invalid data on the frontend.
 		return null;
 	}
 
 	validJSON() {
 		try {
-			const s = JSON.stringify(this.tokens);
-			const p = JSON.parse(s);
+			JSON.parse(JSON.stringify(this.tokens));
 			return true;
 		} catch (error) {
-			return false;
+			throw new Error("Parsing failed.")
 		}
 	}
 }
